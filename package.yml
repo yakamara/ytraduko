@@ -1,0 +1,16 @@
+package: ytraduko
+version: '0.1-dev'
+author: Gregor Harlan
+supportpage: www.redaxo.org/de/forum/
+
+page:
+    title: YTraduko
+    icon: rex-icon fa-language
+    perm: ytraduko[]
+
+requires:
+    redaxo: '^5.3.0'
+
+config:
+    languages: [en_gb, se_sv]
+    packages_ignore: [debug, textile]
