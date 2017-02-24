@@ -7,7 +7,7 @@
                     <thead>
                         <tr>
                             <th style="width: 50px"><?= $this->i18n('ytraduko_key') ?></th>
-                            <th style="width: 400px">de_de</th>
+                            <th>de_de</th>
                             <th><?= $this->escape($this->language) ?></th>
                         </tr>
                     </thead>
@@ -16,7 +16,7 @@
                         <?php foreach ($this->package->getSource() as $key => $value): ?>
                             <tr>
                                 <td><code><?= $this->escape($key) ?></code></td>
-                                <td><?= $this->escape($value) ?></td>
+                                <td style="max-width: 200px; word-wrap:break-word;"><?= $this->escape($value) ?></td>
                                 <td<?= isset($file[$key]) ? '' : ' class="has-error"' ?>>
                                     <input type="text" class="form-control"
                                         name="ytraduko[<?= $this->escape($this->package->getName()) ?>][<?= $this->escape(rawurlencode($key)) ?>]"
@@ -34,7 +34,7 @@
                                 <?php foreach ($plugin->getSource() as $key => $value): ?>
                                     <tr>
                                         <td><code><?= $this->escape($key) ?></code></td>
-                                        <td><?= $this->escape($value) ?></td>
+                                        <td style="max-width: 200px; word-wrap:break-word;"><?= $this->escape($value) ?></td>
                                         <td<?= isset($file[$key]) ? '' : ' class="has-error"' ?>>
                                             <input type="text" class="form-control"
                                                 name="ytraduko[<?= $this->escape($plugin->getName()) ?>][<?= $this->escape(rawurlencode($key)) ?>]"
