@@ -51,6 +51,13 @@ echo rex_view::toolbar($fragment->parse('ytraduko/toolbar.php'), null, null, tru
 
 $data = rex_post('ytraduko', 'array');
 if ($data) {
+    foreach ($data as &$packageData) {
+        $keys = array_map(function ($key) {
+            return rawurldecode($key);
+        }, array_keys($packageData));
+        $packageData = array_combine($keys, $packageData);
+    }
+
     $package->getFile($language)->exchangeArray(isset($data[$package->getName()]) ? $data[$package->getName()] : []);
     $package->save($language);
 

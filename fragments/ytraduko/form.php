@@ -19,7 +19,7 @@
                                 <td><?= $this->escape($value) ?></td>
                                 <td<?= isset($file[$key]) ? '' : ' class="has-error"' ?>>
                                     <input type="text" class="form-control"
-                                        name="ytraduko[<?= $this->escape($this->package->getName()) ?>][<?= $this->escape($key) ?>]"
+                                        name="ytraduko[<?= $this->escape($this->package->getName()) ?>][<?= $this->escape(rawurlencode($key)) ?>]"
                                         value="<?= isset($file[$key]) ? $this->escape($file[$key]) : '' ?>"
                                     />
                                 </td>
@@ -37,7 +37,7 @@
                                         <td><?= $this->escape($value) ?></td>
                                         <td<?= isset($file[$key]) ? '' : ' class="has-error"' ?>>
                                             <input type="text" class="form-control"
-                                                name="ytraduko[<?= $this->escape($plugin->getName()) ?>][<?= $this->escape($key) ?>]"
+                                                name="ytraduko[<?= $this->escape($plugin->getName()) ?>][<?= $this->escape(rawurlencode($key)) ?>]"
                                                 value="<?= isset($file[$key]) ? $this->escape($file[$key]) : '' ?>"
                                             />
                                         </td>
