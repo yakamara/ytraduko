@@ -4,7 +4,7 @@
 
 echo rex_view::title(include $this->getPath('pages/_title.php'));
 
-$languages = $this->getProperty('config')['languages'];
+$languages = rex::getUser()->getComplexPerm('ytraduko')->getLanguages();
 $packages = rex_ytraduko_package::getAll();
 
 $language = rex_get('language', 'string');
