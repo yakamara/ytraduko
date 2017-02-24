@@ -12,5 +12,5 @@ requires:
     redaxo: '^5.3.0'
 
 config:
-    languages: [en_gb, se_sv]
+    languages: [en_gb, it_it, se_sv]
     packages_ignore: [debug, textile]
