@@ -51,7 +51,6 @@ $data = [
     "भाषांतर",
     "terjemahan",
     "traduzzjoni",
-    "ဘာသာပြန်ချက်",
     "अनुवाद",
     "Vertaling",
     "Oversettelse",
