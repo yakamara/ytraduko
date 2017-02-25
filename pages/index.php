@@ -58,8 +58,10 @@ if ($data) {
         $packageData = array_combine($keys, $packageData);
     }
 
-    $package->getFile($language)->exchangeArray(isset($data[$package->getName()]) ? $data[$package->getName()] : []);
-    $package->save($language);
+    if (count($package->getSource())) {
+        $package->getFile($language)->exchangeArray(isset($data[$package->getName()]) ? $data[$package->getName()] : []);
+        $package->save($language);
+    }
 
     if ($package instanceof rex_ytraduko_addon) {
         foreach ($package->getPlugins() as $plugin) {
