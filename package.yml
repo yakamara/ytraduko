@@ -13,4 +13,23 @@ requires:
 
 config:
     languages: [en_gb, it_it, se_sv, cs_cz, pt_br]
-    packages_ignore: [debug, textile]
+    packages_ignore: [debug, tests, textile]
+    packages_order:
+        core_addons:
+            - backup
+            - be_style
+            - cronjob
+            - install
+            - media_manager
+            - mediapool
+            - metainfo
+            - phpmailer
+            - project
+            - structure
+            - users
+        y_addons:
+            - ycom
+            - yfeed
+            - yform
+            - yrewrite
+            - ytraduko

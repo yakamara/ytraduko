@@ -12,26 +12,34 @@
         </tr>
     </thead>
     <tbody>
-        <?php foreach ($this->packages as $package): /** @var rex_ytraduko_package $package */ ?>
+        <?php foreach ($this->packages as $group => $groupPackages): ?>
             <tr>
-                <td class="rex-table-icon"><i class="rex-icon rex-icon-package-addon"></i></td>
-                <td><?= $this->escape($package->getName()) ?></td>
-                <td><?= $this->escape($package->getVersion()) ?></td>
-                <td class="text-center"><?= $package->countKeys() ?></td>
-                <?php foreach ($this->languages as $language): ?>
-                    <?php $percentage = (int) (100 * $package->countLanguageKeys($language) / $package->countKeys()); ?>
-                    <td class="text-center">
-                        <a href="<?= $this->context->getUrl(['language' => $language, 'package' => $package->getName()]) ?>">
-                            <div class="progress" style="margin-bottom: 0">
-                                <div class="progress-bar progress-bar-success" style="width: <?= $percentage ?>%">
-                                    <?= $percentage ?> %
-                                </div>
-                                <div class="progress-bar progress-bar-danger" style="width: <?= 100 - $percentage ?>%"></div>
-                            </div>
-                        </a>
-                    </td>
-                <?php endforeach ?>
+                <td></td>
+                <td colspan="<?= 3 + count($this->languages) ?>">
+                    <b><?= $this->i18n('ytraduko_packages_'.$group) ?></b>
+                </td>
             </tr>
+            <?php foreach ($groupPackages as $package): /** @var rex_ytraduko_package $package */ ?>
+                <tr>
+                    <td class="rex-table-icon"><i class="rex-icon rex-icon-package-addon"></i></td>
+                    <td><?= $this->escape($package->getName()) ?></td>
+                    <td><?= $this->escape($package->getVersion()) ?></td>
+                    <td class="text-center"><?= $package->countKeys() ?></td>
+                    <?php foreach ($this->languages as $language): ?>
+                        <?php $percentage = (int) (100 * $package->countLanguageKeys($language) / $package->countKeys()); ?>
+                        <td class="text-center">
+                            <a href="<?= $this->context->getUrl(['language' => $language, 'package' => $package->getName()]) ?>">
+                                <div class="progress" style="margin-bottom: 0">
+                                    <div class="progress-bar progress-bar-success" style="width: <?= $percentage ?>%">
+                                        <?= $percentage ?> %
+                                    </div>
+                                    <div class="progress-bar progress-bar-danger" style="width: <?= 100 - $percentage ?>%"></div>
+                                </div>
+                            </a>
+                        </td>
+                    <?php endforeach ?>
+                </tr>
+            <?php endforeach ?>
         <?php endforeach ?>
     </tbody>
     <tfoot>

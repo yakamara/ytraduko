@@ -24,25 +24,41 @@ class rex_ytraduko_package
         $this->countKeys = count($this->source);
     }
 
-    /**
-     * @return self[]
-     */
     public static function getAll()
     {
         $all = [];
-        $all['core'] = new self('core', rex::getVersion(), rex_path::core('lang'));
+        $all['core']['core'] = new self('core', rex::getVersion(), rex_path::core('lang'));
 
-        $ignore = rex_addon::get('ytraduko')->getProperty('config')['packages_ignore'];
+        $config = rex_addon::get('ytraduko')->getProperty('config');
 
-        foreach (rex_addon::getRegisteredAddons() as $addon) {
-            if (in_array($addon->getName(), $ignore)) {
-                continue;
+        $add = function ($group, rex_addon $addon) use (&$all, $config) {
+            static $added = [];
+
+            if (isset($added[$addon->getName()])) {
+                return;
+            }
+
+            if (in_array($addon->getName(), $config['packages_ignore'])) {
+                return;
             }
 
             $addon = rex_ytraduko_addon::create($addon);
             if ($addon) {
-                $all[$addon->getName()] = $addon;
+                $all[$group][$addon->getName()] = $addon;
+                $added[$addon->getName()] = true;
             }
+        };
+
+        foreach ($config['packages_order'] as $group => $addons) {
+            foreach ($addons as $addon) {
+                if (rex_addon::exists($addon)) {
+                    $add($group, rex_addon::get($addon));
+                }
+            }
+        }
+
+        foreach (rex_addon::getRegisteredAddons() as $addon) {
+            $add('other_addons', $addon);
         }
 
         return $all;

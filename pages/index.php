@@ -8,20 +8,36 @@ $languages = rex::getUser()->getComplexPerm('ytraduko')->getLanguages();
 $packages = rex_ytraduko_package::getAll();
 
 $language = rex_get('language', 'string');
-$package = rex_get('package', 'string');
+$packageName = rex_get('package', 'string');
+
+/** @var null|rex_ytraduko_package $package */
+$package = null;
+if (in_array($language, $languages) && $packageName) {
+    foreach ($packages as $groupPackages) {
+        if (isset($groupPackages[$packageName])) {
+            $package = $groupPackages[$packageName];
+
+            break;
+        }
+    }
+}
 
 $context = rex_context::fromGet();
 
-if (!in_array($language, $languages) || !isset($packages[$package])) {
+if (!$package) {
     $total = ['de_de' => 0];
-    foreach ($packages as $package) {
-        $k = $package->countKeys();
-        $total['de_de'] += $package->countKeys();
+    foreach ($packages as $group => $groupPackages) {
+        foreach ($groupPackages as $package) {
+            $k = $package->countKeys();
+            $total['de_de'] += $package->countKeys();
+        }
     }
     foreach ($languages as $language) {
         $total[$language] = 0;
-        foreach ($packages as $package) {
-            $total[$language] += $package->countLanguageKeys($language);
+        foreach ($packages as $group => $groupPackages) {
+            foreach ($groupPackages as $package) {
+                $total[$language] += $package->countLanguageKeys($language);
+            }
         }
     }
 
@@ -40,8 +56,6 @@ if (!in_array($language, $languages) || !isset($packages[$package])) {
 
     return;
 }
-
-$package = $packages[$package];
 
 $fragment = new rex_fragment([
     'languages' => $languages,

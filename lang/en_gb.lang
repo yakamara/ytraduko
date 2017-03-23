@@ -3,6 +3,11 @@ ytraduko_overview = Overview
 ytraduko_package = Package
 ytraduko_language = Language
 
+ytraduko_packages_core = Core
+ytraduko_packages_core_addons = Core addons
+ytraduko_packages_y_addons = Y addons
+ytraduko_packages_other_addons = Other addons
+
 ytraduko_key = Key
 
 ytraduko_total = Total

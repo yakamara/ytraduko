@@ -6,22 +6,26 @@
         </a>
     </li>
     <li class="dropdown">
-        <?php
-            $items = array_map(function (rex_ytraduko_package $package) {
-                return [
-                    'title' => $this->escape($package->getName()),
-                    'href' => $this->context->getUrl(['package' => $package->getName()]),
-                    'active' => $this->package === $package,
-                ];
-            }, $this->packages);
+        <a class="dropdown-toggle" href="#" role="button" data-toggle="dropdown">
+            <?= $this->i18n('ytraduko_package') ?>:
+            <b><?= $this->escape($this->package->getName()) ?></b>
+            <span class="caret"></span>
+        </a>
+        <ul class="dropdown-menu" role="menu">
+            <?php foreach ($this->packages as $group => $groupPackages): ?>
+                <li class="dropdown-header">
+                    <?= $this->i18n('ytraduko_packages_'.$group) ?>
+                </li>
 
-            $this->subfragment('core/dropdowns/dropdown.php', [
-                'toolbar' => true,
-                'button_prefix' => $this->i18n('ytraduko_package').': ',
-                'button_label' => $this->escape($this->package->getName()),
-                'items' => $items,
-            ]);
-        ?>
+                <?php foreach ($groupPackages as $package): /** @var rex_ytraduko_package $package */ ?>
+                    <li<?php if ($this->package === $package): ?> class="active"<?php endif ?>>
+                        <a href="<?= $this->context->getUrl(['package' => $package->getName()]) ?>">
+                            <?= $this->escape($package->getName()) ?>
+                        </a>
+                    </li>
+                <?php endforeach ?>
+            <?php endforeach ?>
+        </ul>
     </li>
     <li class="dropdown">
         <?php

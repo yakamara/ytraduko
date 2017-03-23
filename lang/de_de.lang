@@ -3,6 +3,11 @@ ytraduko_overview = Übersicht
 ytraduko_package = Paket
 ytraduko_language = Sprache
 
+ytraduko_packages_core = Core
+ytraduko_packages_core_addons = Core-AddOns
+ytraduko_packages_y_addons = Y-AddOns
+ytraduko_packages_other_addons = Weitere AddOns
+
 ytraduko_key = Schlüssel
 
 ytraduko_total = Gesamt
