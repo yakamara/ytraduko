@@ -25,6 +25,10 @@ if (!in_array($language, $languages) || !isset($packages[$package])) {
         }
     }
 
+    usort($languages, function ($a, $b) use ($total) {
+        return $total[$b] > $total[$a] ? 1 : -1;
+    });
+
     $fragment = new rex_fragment([
         'languages' => $languages,
         'packages' => $packages,
