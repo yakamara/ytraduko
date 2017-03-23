@@ -8,15 +8,22 @@
                         <tr>
                             <th style="width: 50px"><?= $this->i18n('ytraduko_key') ?></th>
                             <th>de_de</th>
+                            <?php if ('en_gb' !== $this->language): ?>
+                                <th>en_gb</th>
+                            <?php endif ?>
                             <th><?= $this->escape($this->language) ?></th>
                         </tr>
                     </thead>
                     <tbody>
+                        <?php $english = 'en_gb' === $this->language ? null : $this->package->getFile('en_gb') ?>
                         <?php $file = $this->package->getFile($this->language) ?>
                         <?php foreach ($this->package->getSource() as $key => $value): ?>
                             <tr>
                                 <td><code><?= $this->escape($key) ?></code></td>
                                 <td style="max-width: 200px; word-wrap:break-word;"><?= $this->escape($value) ?></td>
+                                <?php if ($english): ?>
+                                    <td style="max-width: 200px; word-wrap:break-word;"><?= isset($english[$key]) ? $this->escape($english[$key]) : '' ?></td>
+                                <?php endif ?>
                                 <td<?= isset($file[$key]) ? '' : ' class="has-error"' ?>>
                                     <input type="text" class="form-control"
                                         name="ytraduko[<?= $this->escape($this->package->getName()) ?>][<?= $this->escape(rawurlencode($key)) ?>]"
@@ -28,13 +35,17 @@
                         <?php if ($this->package instanceof rex_ytraduko_addon): ?>
                             <?php foreach ($this->package->getPlugins() as $plugin): ?>
                                 <tr>
-                                    <th colspan="3"><?= $this->escape($plugin->getName()) ?></th>
+                                    <th colspan="<?= 'en_gb' === $this->language ? 3 : 4 ?>"><?= $this->escape($plugin->getName()) ?></th>
                                 </tr>
+                                <?php $english = 'en_gb' === $this->language ? null : $plugin->getFile('en_gb') ?>
                                 <?php $file = $plugin->getFile($this->language) ?>
                                 <?php foreach ($plugin->getSource() as $key => $value): ?>
                                     <tr>
                                         <td><code><?= $this->escape($key) ?></code></td>
                                         <td style="max-width: 200px; word-wrap:break-word;"><?= $this->escape($value) ?></td>
+                                        <?php if ($english): ?>
+                                            <td style="max-width: 200px; word-wrap:break-word;"><?= isset($english[$key]) ? $this->escape($english[$key]) : '' ?></td>
+                                        <?php endif ?>
                                         <td<?= isset($file[$key]) ? '' : ' class="has-error"' ?>>
                                             <input type="text" class="form-control"
                                                 name="ytraduko[<?= $this->escape($plugin->getName()) ?>][<?= $this->escape(rawurlencode($key)) ?>]"
