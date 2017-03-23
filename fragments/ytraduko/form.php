@@ -4,9 +4,17 @@
         <div class="panel panel-default">
             <div class="panel-body">
                 <table class="table table-hover">
+                    <colgroup>
+                        <col class="col-key" />
+                        <col class="col-de" />
+                        <?php if ('en_gb' !== $this->language): ?>
+                            <col class="col-en" />
+                        <?php endif ?>
+                        <col width="*" />
+                    </colgroup>
                     <thead>
                         <tr>
-                            <th style="width: 50px"><?= $this->i18n('ytraduko_key') ?></th>
+                            <th><?= $this->i18n('ytraduko_key') ?></th>
                             <th>de_de</th>
                             <?php if ('en_gb' !== $this->language): ?>
                                 <th>en_gb</th>
@@ -20,9 +28,9 @@
                         <?php foreach ($this->package->getSource() as $key => $value): ?>
                             <tr>
                                 <td><code><?= $this->escape($key) ?></code></td>
-                                <td style="max-width: 200px; word-wrap:break-word;"><?= $this->escape($value) ?></td>
+                                <td><?= $this->escape($value) ?></td>
                                 <?php if ($english): ?>
-                                    <td style="max-width: 200px; word-wrap:break-word;"><?= isset($english[$key]) ? $this->escape($english[$key]) : '' ?></td>
+                                    <td><?= isset($english[$key]) ? $this->escape($english[$key]) : '' ?></td>
                                 <?php endif ?>
                                 <td<?= isset($file[$key]) ? '' : ' class="has-error"' ?>>
                                     <input type="text" class="form-control"
@@ -41,10 +49,10 @@
                                 <?php $file = $plugin->getFile($this->language) ?>
                                 <?php foreach ($plugin->getSource() as $key => $value): ?>
                                     <tr>
-                                        <td><code><?= $this->escape($key) ?></code></td>
-                                        <td style="max-width: 200px; word-wrap:break-word;"><?= $this->escape($value) ?></td>
+                                        <td><div><code><?= $this->escape($key) ?></code></div></td>
+                                        <td><?= $this->escape($value) ?></td>
                                         <?php if ($english): ?>
-                                            <td style="max-width: 200px; word-wrap:break-word;"><?= isset($english[$key]) ? $this->escape($english[$key]) : '' ?></td>
+                                            <td><?= isset($english[$key]) ? $this->escape($english[$key]) : '' ?></td>
                                         <?php endif ?>
                                         <td<?= isset($file[$key]) ? '' : ' class="has-error"' ?>>
                                             <input type="text" class="form-control"
@@ -71,3 +79,39 @@
         </div>
     </section>
 </form>
+
+<style>
+    tbody {
+        font-size: 12px;
+        font-family: -apple-system, BlinkMacSystemFont, 'Lucida Grande', 'Helvetica Neue', Arial, sans-serif;
+    }
+    tbody td {
+        word-break: break-all;
+    }
+    tbody td code {
+        padding: 0;
+        background-color: transparent;
+    }
+    @media (min-width: 992px) and (max-width: 1199px) {
+        .col-key {
+            width: 15%;
+        }
+        .col-de {
+            width: 20%;
+        }
+        .col-en {
+            width: 20%;
+        }
+    }
+    @media (min-width: 1200px) {
+        .col-key {
+            width: 10%;
+        }
+        .col-de {
+            width: 20%;
+        }
+        .col-en {
+            width: 20%;
+        }
+    }
+</style>
