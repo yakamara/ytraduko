@@ -6,6 +6,10 @@
     margin-left: 0 !important;
 }
 
+.rex-ytraduko-overview {
+    table-layout: fixed;
+}
+
 .rex-ytraduko-form tbody {
     font-size: 12px;
     font-family: -apple-system, BlinkMacSystemFont, 'Lucida Grande', 'Helvetica Neue', Arial, sans-serif;
