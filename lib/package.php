@@ -97,7 +97,7 @@ class rex_ytraduko_package
     public function getFile($language)
     {
         if (!isset($this->files[$language])) {
-            $this->files[$language] = new rex_ytraduko_file($this->path.'/'.$language.'.lang');
+            $this->files[$language] = new rex_ytraduko_file($this->path.'/'.$language.'.lang', $this->getSource());
         }
 
         return $this->files[$language];
