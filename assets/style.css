@@ -1,0 +1,37 @@
+.rex-ytraduko-form tbody {
+    font-size: 12px;
+    font-family: -apple-system, BlinkMacSystemFont, 'Lucida Grande', 'Helvetica Neue', Arial, sans-serif;
+}
+
+.rex-ytraduko-form tbody td {
+    word-break: break-all;
+}
+
+.rex-ytraduko-form tbody td code {
+    padding: 0;
+    background-color: transparent;
+}
+
+@media (min-width: 992px) and (max-width: 1199px) {
+    .rex-ytraduko-form .col-key {
+        width: 15%;
+    }
+    .rex-ytraduko-form .col-de {
+        width: 20%;
+    }
+    .rex-ytraduko-form .col-en {
+        width: 20%;
+    }
+}
+
+@media (min-width: 1200px) {
+    .rex-ytraduko-form .col-key {
+        width: 10%;
+    }
+    .rex-ytraduko-form .col-de {
+        width: 20%;
+    }
+    .rex-ytraduko-form .col-en {
+        width: 20%;
+    }
+}

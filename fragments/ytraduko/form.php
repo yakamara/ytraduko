@@ -1,5 +1,5 @@
 <?php /** @var rex_fragment $this */ ?>
-<form action="<?= $this->context->getUrl() ?>" method="post">
+<form class="rex-ytraduko-form" action="<?= $this->context->getUrl() ?>" method="post">
     <section class="rex-page-section">
         <div class="panel panel-default">
             <div class="panel-body">
@@ -79,39 +79,3 @@
         </div>
     </section>
 </form>
-
-<style>
-    tbody {
-        font-size: 12px;
-        font-family: -apple-system, BlinkMacSystemFont, 'Lucida Grande', 'Helvetica Neue', Arial, sans-serif;
-    }
-    tbody td {
-        word-break: break-all;
-    }
-    tbody td code {
-        padding: 0;
-        background-color: transparent;
-    }
-    @media (min-width: 992px) and (max-width: 1199px) {
-        .col-key {
-            width: 15%;
-        }
-        .col-de {
-            width: 20%;
-        }
-        .col-en {
-            width: 20%;
-        }
-    }
-    @media (min-width: 1200px) {
-        .col-key {
-            width: 10%;
-        }
-        .col-de {
-            width: 20%;
-        }
-        .col-en {
-            width: 20%;
-        }
-    }
-</style>
