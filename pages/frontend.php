@@ -14,6 +14,7 @@ rex_view::addJsFile(rex_url::coreAssets('standard.js'));
 
 rex_view::setJsProperty('backend', true);
 rex_view::setJsProperty('accesskeys', rex::getProperty('use_accesskeys'));
+rex_view::setJsProperty('page', 'ytraduko');
 
 $beStyle = rex_addon::get('be_style');
 $beStyleRedaxo = $beStyle->getPlugin('redaxo');
@@ -40,7 +41,7 @@ rex_be_controller::includeCurrentPage();
 $content = ob_get_clean();
 
 // replace logo link
-$content = preg_replace('/(?<=<a class="navbar-brand" href=")[^"]*(?=">)/', rex_url::frontend(), $content);
+$content = preg_replace('/(?<=<a class="navbar-brand" href=")[^"]*(?=">)/', rex_url::frontendController(['page' => 'ytraduko']), $content);
 
 // fake login page to avoid htaccess check with wrong paths
 $content = str_replace('</body>', '<div id="rex-page-login" class="hidden"></div></body>', $content);

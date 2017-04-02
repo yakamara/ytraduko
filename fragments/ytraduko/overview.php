@@ -1,5 +1,5 @@
 <?php /** @var rex_fragment $this */ ?>
-<table class="table table-hover rex-ytraduko-overview">
+<table class="table table-hover rex-ytraduko-overview" data-pjax-scroll-to="0">
     <thead>
         <tr>
             <th class="rex-table-icon">&nbsp;</th>
