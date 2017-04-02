@@ -68,7 +68,7 @@ $fragment = new rex_fragment([
 
 echo rex_view::toolbar($fragment->parse('ytraduko/toolbar.php'), null, null, true);
 
-$readonly = !rex::getUser()->getComplexPerm('ytraduko')->has($language);
+$readonly = !rex::getUser() || !rex::getUser()->getComplexPerm('ytraduko')->has($language);
 
 $data = rex_post('ytraduko', 'array');
 if (!$readonly && $data) {

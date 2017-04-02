@@ -3,11 +3,6 @@ version: '0.1-dev'
 author: Gregor Harlan
 supportpage: www.redaxo.org/de/forum/
 
-page:
-    title: YTraduko
-    icon: rex-icon fa-language
-    perm: ytraduko/hasAny
-
 requires:
     redaxo: '^5.3.0'
 
