@@ -1,3 +1,11 @@
+.rex-nav-main {
+    display: none !important;
+}
+
+.rex-global-footer {
+    margin-left: 0 !important;
+}
+
 .rex-ytraduko-form tbody {
     font-size: 12px;
     font-family: -apple-system, BlinkMacSystemFont, 'Lucida Grande', 'Helvetica Neue', Arial, sans-serif;
