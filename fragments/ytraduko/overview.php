@@ -29,7 +29,7 @@
                         <?php $percentage = (int) (100 * $package->countLanguageKeys($language) / $package->countKeys()); ?>
                         <td class="text-center">
                             <a href="<?= $this->context->getUrl(['language' => $language, 'package' => $package->getName()]) ?>">
-                                <div class="progress" style="margin-bottom: 0">
+                                <div class="progress" style="margin-bottom: 0" title="<?= $package->countLanguageKeys($language), ' / ', $package->countKeys() ?>">
                                     <div class="progress-bar progress-bar-success" style="width: <?= $percentage ?>%">
                                         <?= $percentage ?> %
                                     </div>
@@ -51,7 +51,7 @@
             <?php foreach ($this->languages as $language): ?>
                 <?php $percentage = (int) (100 * $this->total[$language] / $this->total['de_de']); ?>
                 <td class="text-center">
-                    <div class="progress" style="margin-bottom: 0">
+                    <div class="progress" style="margin-bottom: 0" title="<?= $this->total[$language], ' / ', $this->total['de_de'] ?>">
                         <div class="progress-bar progress-bar-success" style="width: <?= $percentage ?>%">
                             <?= $percentage ?> %
                         </div>
