@@ -36,6 +36,7 @@
                                     <input type="text" class="form-control"
                                         name="ytraduko[<?= $this->escape($this->package->getName()) ?>][<?= $this->escape(rawurlencode($key)) ?>]"
                                         value="<?= isset($file[$key]) ? $this->escape($file[$key]) : '' ?>"
+                                        <?= $this->readonly ? 'readonly' : '' ?>
                                     />
                                 </td>
                             </tr>
@@ -58,6 +59,7 @@
                                             <input type="text" class="form-control"
                                                 name="ytraduko[<?= $this->escape($plugin->getName()) ?>][<?= $this->escape(rawurlencode($key)) ?>]"
                                                 value="<?= isset($file[$key]) ? $this->escape($file[$key]) : '' ?>"
+                                                <?= $this->readonly ? 'readonly' : '' ?>
                                             />
                                         </td>
                                     </tr>
@@ -67,15 +69,17 @@
                     </tbody>
                 </table>
             </div>
-            <div class="panel-footer">
-                <div class="rex-form-panel-footer">
-                    <div class="btn-toolbar">
-                        <button class="btn btn-save rex-form-aligned pull-right" type="submit"<?= rex::getAccesskey($this->i18n('form_save'), 'save') ?>>
-                            <?= $this->i18n('form_save') ?>
-                        </button>
+            <?php if (!$this->readonly): ?>
+                <div class="panel-footer">
+                    <div class="rex-form-panel-footer">
+                        <div class="btn-toolbar">
+                            <button class="btn btn-save rex-form-aligned pull-right" type="submit"<?= rex::getAccesskey($this->i18n('form_save'), 'save') ?>>
+                                <?= $this->i18n('form_save') ?>
+                            </button>
+                        </div>
                     </div>
                 </div>
-            </div>
+            <?php endif; ?>
         </div>
     </section>
 </form>

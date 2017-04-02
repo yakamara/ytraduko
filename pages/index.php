@@ -4,7 +4,7 @@
 
 echo rex_view::title(include $this->getPath('pages/_title.php'));
 
-$languages = rex::getUser()->getComplexPerm('ytraduko')->getLanguages();
+$languages = rex_addon::get('ytraduko')->getProperty('config')['languages'];
 $packages = rex_ytraduko_package::getAll();
 
 $total = ['de_de' => 0];
@@ -68,8 +68,10 @@ $fragment = new rex_fragment([
 
 echo rex_view::toolbar($fragment->parse('ytraduko/toolbar.php'), null, null, true);
 
+$readonly = !rex::getUser()->getComplexPerm('ytraduko')->has($language);
+
 $data = rex_post('ytraduko', 'array');
-if ($data) {
+if (!$readonly && $data) {
     foreach ($data as &$packageData) {
         $keys = array_map(function ($key) {
             return rawurldecode($key);
@@ -98,6 +100,7 @@ $fragment = new rex_fragment([
     'language' => $language,
     'package' => $package,
     'context' => $context,
+    'readonly' => $readonly,
 ]);
 
 echo $fragment->parse('ytraduko/form.php');
