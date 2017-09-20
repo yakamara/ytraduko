@@ -4,7 +4,7 @@
 
 echo rex_view::title(include $this->getPath('pages/_title.php'));
 
-$languages = rex_addon::get('ytraduko')->getProperty('config')['languages'];
+$languages = rex_ytraduko_perm::getAllLanguages();
 $packages = rex_ytraduko_package::getAll();
 
 $total = ['de_de' => 0];

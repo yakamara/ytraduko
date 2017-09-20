@@ -7,7 +7,6 @@ requires:
     redaxo: '^5.3.0'
 
 config:
-    languages: [en_gb, it_it, se_sv, cs_cz, pt_br, es_bo]
     packages_ignore: [debug, tests, textile]
     packages_order:
         core_addons:

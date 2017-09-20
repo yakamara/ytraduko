@@ -29,8 +29,11 @@ class rex_ytraduko_perm extends rex_complex_perm
         ];
     }
 
-    private static function getAllLanguages()
+    public static function getAllLanguages()
     {
-        return rex_addon::get('ytraduko')->getProperty('config')['languages'];
+        $languages = rex_i18n::getLocales();
+        unset($languages[array_search('de_de', $languages, true)]);
+
+        return $languages;
     }
 }
