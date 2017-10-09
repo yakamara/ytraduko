@@ -26,7 +26,7 @@ class rex_ytraduko_file extends ArrayObject
     {
         if (
             ($content = rex_file::get($this->path)) &&
-            preg_match_all('/^([^\s]*)\h*=\h*(\V*\S?)\h*$/m', $content, $matches, PREG_SET_ORDER)
+            preg_match_all('/^([^=\s]+)\h*=\h*(.*)(?<=\S)/m', $content, $matches, PREG_SET_ORDER)
         ) {
             foreach ($matches as $match) {
                 if (!$match[2]) {
