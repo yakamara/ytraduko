@@ -106,6 +106,11 @@ class rex_ytraduko_package
     public function save($language)
     {
         $content = rex_file::get($this->source->getPath());
+
+        if (!$content) {
+            return;
+        }
+
         $file = $this->getFile($language);
 
         foreach ($file as $key => $value) {
