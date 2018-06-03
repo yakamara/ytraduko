@@ -47,6 +47,9 @@ require rex_path::core('layout/bottom.php');
 
 $content = ob_get_clean();
 
+// replace title
+$content = preg_replace('/(?<=<title>)[^<]*(?=REDAXO CMS)/', 'YTraduko · ', $content);
+
 // replace logo link
 $content = preg_replace('/(?<=<a class="navbar-brand" href=")[^"]*(?=">)/', rex_url::frontend(), $content);
 
