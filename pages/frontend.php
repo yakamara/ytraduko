@@ -36,7 +36,14 @@ if (!rex::getUser()) {
     });
 }
 
-rex_be_controller::includeCurrentPage();
+// use backend csrf tokens in header
+rex::setProperty('redaxo', true);
+require rex_path::core('layout/top.php');
+rex::setProperty('redaxo', false);
+
+$this->includeFile('pages/index.php');
+
+require rex_path::core('layout/bottom.php');
 
 $content = ob_get_clean();
 
