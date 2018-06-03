@@ -10,13 +10,18 @@
     table-layout: fixed;
 }
 
+.rex-ytraduko-form table {
+    table-layout: fixed;
+}
+
 .rex-ytraduko-form tbody {
     font-size: 12px;
     font-family: -apple-system, BlinkMacSystemFont, 'Lucida Grande', 'Helvetica Neue', Arial, sans-serif;
 }
 
 .rex-ytraduko-form tbody td {
-    word-break: break-all;
+    word-break: break-word;
+    overflow-wrap: break-word;
 }
 
 .rex-ytraduko-form tbody td code {

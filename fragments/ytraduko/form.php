@@ -27,7 +27,7 @@
                         <?php $file = $this->package->getFile($this->language) ?>
                         <?php foreach ($this->package->getSource() as $key => $value): ?>
                             <tr>
-                                <td><code><?= $this->escape($key) ?></code></td>
+                                <td><code><?= str_replace('_', '_<wbr>', $this->escape($key)) ?></code></td>
                                 <td><?= $this->escape($value) ?></td>
                                 <?php if ($english): ?>
                                     <td><?= isset($english[$key]) ? $this->escape($english[$key]) : '' ?></td>
@@ -50,7 +50,7 @@
                                 <?php $file = $plugin->getFile($this->language) ?>
                                 <?php foreach ($plugin->getSource() as $key => $value): ?>
                                     <tr>
-                                        <td><div><code><?= $this->escape($key) ?></code></div></td>
+                                        <td><div><code><?= str_replace('_', '_<wbr>', $this->escape($key)) ?></code></div></td>
                                         <td><?= $this->escape($value) ?></td>
                                         <?php if ($english): ?>
                                             <td><?= isset($english[$key]) ? $this->escape($english[$key]) : '' ?></td>
