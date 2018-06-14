@@ -26,9 +26,14 @@ rex::setProperty('redaxo', false);
 
 rex_view::addCssFile($this->getAssetsUrl('style.css'));
 
-rex_backend_login::createUser();
+$user = rex_backend_login::createUser();
 
-if (!rex::getUser()) {
+if ($user) {
+    $lang = $user->getLanguage();
+    if ($lang && 'default' !== $lang && rex::getProperty('lang') !== $lang) {
+        rex_i18n::setLocale($lang);
+    }
+} else {
     rex_extension::register('META_NAVI', function () {
         return [
             sprintf('<li><a href="%s" class="rex-login"><i class="rex-icon rex-icon-sign-in"></i> %s</a></li>', rex_url::backend(), rex_i18n::msg('login')),
