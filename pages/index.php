@@ -25,6 +25,10 @@ foreach ($languages as $language) {
 }
 
 usort($languages, function ($a, $b) use ($total) {
+    if ($total[$a] === $total[$b]) {
+        return strcmp($a, $b);
+    }
+
     return $total[$b] > $total[$a] ? 1 : -1;
 });
 
