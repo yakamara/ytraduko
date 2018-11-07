@@ -58,6 +58,9 @@ $content = preg_replace('/(?<=<title>)[^<]*(?=REDAXO CMS)/', 'YTraduko · ', $co
 // replace logo link
 $content = preg_replace('/(?<=<a class="navbar-brand" href=")[^"]*(?=">)/', rex_url::frontend(), $content);
 
+// replace asset paths
+$content = preg_replace('@(?<=index\.php\?asset=)\.?(?=/assets/)@', '..', $content);
+
 // fake login page to avoid htaccess check with wrong paths
 $content = str_replace('</body>', '<div id="rex-page-login" class="hidden"></div></body>', $content);
 
