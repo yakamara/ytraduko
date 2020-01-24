@@ -12,6 +12,23 @@
         </tr>
     </thead>
     <tbody>
+        <tr>
+            <td class="rex-table-icon"></td>
+            <td><b><?= mb_strtoupper($this->i18n('ytraduko_total')) ?></b></td>
+            <td></td>
+            <td class="text-center"><b><?= $this->total['de_de'] ?></b></td>
+            <?php foreach ($this->languages as $language): ?>
+                <?php $percentage = (int) (100 * $this->total[$language] / $this->total['de_de']); ?>
+                <td class="text-center">
+                    <div class="progress" style="margin-bottom: 0" title="<?= $this->total[$language], ' / ', $this->total['de_de'] ?>">
+                        <div class="progress-bar progress-bar-success" style="width: <?= $percentage ?>%">
+                            <?= $percentage ?> %
+                        </div>
+                        <div class="progress-bar progress-bar-danger" style="width: <?= 100 - $percentage ?>%"></div>
+                    </div>
+                </td>
+            <?php endforeach ?>
+        </tr>
         <?php foreach ($this->packages as $group => $groupPackages): ?>
             <tr>
                 <td></td>
@@ -43,22 +60,5 @@
         <?php endforeach ?>
     </tbody>
     <tfoot>
-        <tr style="background-color: #dfe3e9">
-            <td class="rex-table-icon"></td>
-            <td><b><?= mb_strtoupper($this->i18n('ytraduko_total')) ?></b></td>
-            <td></td>
-            <td class="text-center"><b><?= $this->total['de_de'] ?></b></td>
-            <?php foreach ($this->languages as $language): ?>
-                <?php $percentage = (int) (100 * $this->total[$language] / $this->total['de_de']); ?>
-                <td class="text-center">
-                    <div class="progress" style="margin-bottom: 0" title="<?= $this->total[$language], ' / ', $this->total['de_de'] ?>">
-                        <div class="progress-bar progress-bar-success" style="width: <?= $percentage ?>%">
-                            <?= $percentage ?> %
-                        </div>
-                        <div class="progress-bar progress-bar-danger" style="width: <?= 100 - $percentage ?>%"></div>
-                    </div>
-                </td>
-            <?php endforeach ?>
-        </tr>
     </tfoot>
 </table>

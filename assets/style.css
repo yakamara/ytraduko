@@ -7,7 +7,36 @@
 }
 
 .rex-ytraduko-overview {
+    position: relative;
     table-layout: fixed;
+}
+
+.rex-ytraduko-overview thead th,
+.rex-ytraduko-overview tbody tr:first-child th,
+.rex-ytraduko-overview tbody tr:first-child td {
+    position: sticky;
+    top: 0;
+    background: #fff;
+    border-bottom: 0 !important;
+    border-top: 0 !important;
+}
+
+.rex-ytraduko-overview tbody tr:first-child,
+.rex-ytraduko-overview tbody tr:first-child th,
+.rex-ytraduko-overview tbody tr:first-child td {
+    background: #324050;
+    color: #9ca5b2;
+}
+
+.rex-ytraduko-overview thead th::after,
+.rex-ytraduko-overview tbody tr:first-child th::after,
+.rex-ytraduko-overview tbody tr:first-child td::after {
+    content:'';
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    border-bottom: 2px solid #dfe3e9;
 }
 
 .rex-ytraduko-form table {
