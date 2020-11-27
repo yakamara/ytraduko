@@ -7,12 +7,13 @@ requires:
     redaxo: '^5.3.0'
 
 config:
-    packages_ignore: [debug, tests, textile]
+    packages_ignore: [tests, textile]
     packages_order:
         core_addons:
             - backup
             - be_style
             - cronjob
+            - debug
             - install
             - media_manager
             - mediapool
