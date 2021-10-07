@@ -10,8 +10,6 @@
                 <th class="text-center"><?= $this->escape($language) ?></th>
             <?php endforeach ?>
         </tr>
-    </thead>
-    <tbody>
         <tr>
             <td class="rex-table-icon"></td>
             <td><b><?= mb_strtoupper($this->i18n('ytraduko_total')) ?></b></td>
@@ -29,6 +27,8 @@
                 </td>
             <?php endforeach ?>
         </tr>
+    </thead>
+    <tbody>
         <?php foreach ($this->packages as $group => $groupPackages): ?>
             <tr>
                 <td></td>

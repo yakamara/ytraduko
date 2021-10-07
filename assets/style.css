@@ -11,32 +11,38 @@
     table-layout: fixed;
 }
 
-.rex-ytraduko-overview thead th,
-.rex-ytraduko-overview tbody tr:first-child th,
-.rex-ytraduko-overview tbody tr:first-child td {
+.rex-ytraduko-overview thead {
     position: sticky;
     top: 0;
+}
+
+.rex-ytraduko-overview thead th,
+.rex-ytraduko-overview thead td {
+    position: relative;
     background: #fff;
     border-bottom: 0 !important;
     border-top: 0 !important;
 }
 
-.rex-ytraduko-overview tbody tr:first-child,
-.rex-ytraduko-overview tbody tr:first-child th,
-.rex-ytraduko-overview tbody tr:first-child td {
+.rex-ytraduko-overview thead tr:last-child,
+.rex-ytraduko-overview thead tr:last-child th,
+.rex-ytraduko-overview thead tr:last-child td {
     background: #324050;
     color: #9ca5b2;
 }
 
 .rex-ytraduko-overview thead th::after,
-.rex-ytraduko-overview tbody tr:first-child th::after,
-.rex-ytraduko-overview tbody tr:first-child td::after {
+.rex-ytraduko-overview thead td::after {
     content:'';
     position: absolute;
     left: 0;
     bottom: 0;
     width: 100%;
     border-bottom: 2px solid #dfe3e9;
+}
+
+.rex-ytraduko-overview tbody tr:first-child > td {
+    border-top: 0 !important;
 }
 
 .rex-ytraduko-form table {
