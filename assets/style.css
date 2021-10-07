@@ -16,23 +16,19 @@
     top: 0;
 }
 
-.rex-ytraduko-overview thead th,
-.rex-ytraduko-overview thead td {
+.rex-ytraduko-overview thead tr > * {
     position: relative;
     background: #fff;
     border-bottom: 0 !important;
     border-top: 0 !important;
 }
 
-.rex-ytraduko-overview thead tr:last-child,
-.rex-ytraduko-overview thead tr:last-child th,
-.rex-ytraduko-overview thead tr:last-child td {
+.rex-ytraduko-overview thead tr:last-child > * {
     background: #324050;
     color: #9ca5b2;
 }
 
-.rex-ytraduko-overview thead th::after,
-.rex-ytraduko-overview thead td::after {
+.rex-ytraduko-overview thead tr > *::after {
     content:'';
     position: absolute;
     left: 0;
@@ -43,6 +39,24 @@
 
 .rex-ytraduko-overview tbody tr:first-child > td {
     border-top: 0 !important;
+}
+
+body.rex-theme-dark .rex-ytraduko-overview thead tr > th {
+    background: #202b35;
+}
+
+body.rex-theme-dark .rex-ytraduko-overview thead tr > *::after {
+    border-bottom: 2px solid #151c22;
+}
+
+@media (prefers-color-scheme: dark) {
+    body:not(.rex-theme-light) .rex-ytraduko-overview thead tr > th {
+        background: #202b35;
+    }
+
+    body:not(.rex-theme-light) .rex-ytraduko-overview thead tr > *::after {
+        border-bottom: 2px solid #151c22;
+    }
 }
 
 .rex-ytraduko-form table {
