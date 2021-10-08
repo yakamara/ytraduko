@@ -55,6 +55,9 @@ $content = ob_get_clean();
 // replace title
 $content = preg_replace('/(?<=<title>)[^<]*(?=REDAXO CMS)/', 'YTraduko · ', $content);
 
+// fake login status body class (needed for correct styles)
+$content = str_replace('rex-is-logged-out', 'rex-is-logged-in', $content);
+
 // replace logo link
 $content = preg_replace('/(?<=<a class="navbar-brand" href=")[^"]*(?=">)/', rex_url::frontend(), $content);
 
