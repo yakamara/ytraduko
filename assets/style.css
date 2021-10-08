@@ -42,20 +42,20 @@
 }
 
 body.rex-theme-dark .rex-ytraduko-overview thead tr > th {
-    background: #202b35;
+    background-color: #202b35;
 }
 
 body.rex-theme-dark .rex-ytraduko-overview thead tr > *::after {
-    border-bottom: 2px solid #151c22;
+    border-bottom-color: #151c22;
 }
 
 @media (prefers-color-scheme: dark) {
     body:not(.rex-theme-light) .rex-ytraduko-overview thead tr > th {
-        background: #202b35;
+        background-color: #202b35;
     }
 
     body:not(.rex-theme-light) .rex-ytraduko-overview thead tr > *::after {
-        border-bottom: 2px solid #151c22;
+        border-bottom-color: #151c22;
     }
 }
 
